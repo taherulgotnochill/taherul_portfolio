@@ -9,6 +9,23 @@ toggle.addEventListener('click', () => {
 const saved = localStorage.getItem('theme');
 if (saved) html.setAttribute('data-theme', saved);
 
+// Mobile menu toggle
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  navLinks.classList.toggle('active');
+});
+
+// Close menu when clicking on a link
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('active');
+  });
+});
+
 // Year
 document.getElementById('year').textContent = new Date().getFullYear();
 
